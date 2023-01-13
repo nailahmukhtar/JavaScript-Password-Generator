@@ -103,7 +103,7 @@ var userInput = {
 // Function to prompt user for password options
 function getPasswordOptions() {
   userInput.passwordLength = prompt("Length of password? (Between 10 and 64)");
-  if (userInput.passwordLength > 10 && userInput.passwordLength < 64) {
+  if (userInput.passwordLength >= 10 && userInput.passwordLength <= 64) {
      userInput.lowercase = confirm("Include lowercase letters? (abc...)?");
      userInput.uppercase = confirm("Include uppercase letters? (ABC..)?");
      userInput.numeric = confirm("Include numbers? (1234..)?");
@@ -111,17 +111,18 @@ function getPasswordOptions() {
   }  else {
     alert("Password must be between 10 and 64");
   }
-
-
-
 }
 
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
-  console.log(userInput.passwordLength);
-  console.log(userInput.lowercase);
-
+  var passText = '';
+  for (let i = 0; i < userInput.passwordLength; i++) {
+    if (userInput.lowercase === true) {
+      passText += lowerCasedCharacters[getRandom(lowerCasedCharacters)];
+    }
+  }
+  return passText;
 }
 
 
