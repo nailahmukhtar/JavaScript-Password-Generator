@@ -1,8 +1,5 @@
 // Array of special characters to be included in password
-var specialCharacters = [
-  '@',
-  '%',
-  '+',
+var specialCharacters = ['@','%','+',
   '\\',
   '/',
   "'",
@@ -58,6 +55,7 @@ var lowerCasedCharacters = [
   'z'
 ];
 
+
 // Array of uppercase characters to be included in password
 var upperCasedCharacters = [
   'A',
@@ -88,20 +86,48 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-// Function to prompt user for password options
-function getPasswordOptions() {
-
-}
-
 // Function for getting a random element from an array
 function getRandom(arr) {
+  var randomNum = Math.floor(Math.random() * arr.length);
+  return randomNum;
+}
+
+var userInput = {
+  passwordLength: 0,
+  lowercase: false,
+  uppercase: false,
+  numeric: false,
+  special: false
+}
+
+// Function to prompt user for password options
+function getPasswordOptions() {
+  userInput.passwordLength = prompt("Length of password? (Between 10 and 64)");
+  if (userInput.passwordLength > 10 && userInput.passwordLength < 64) {
+     userInput.lowercase = confirm("Include lowercase letters? (abc...)?");
+     userInput.uppercase = confirm("Include uppercase letters? (ABC..)?");
+     userInput.numeric = confirm("Include numbers? (1234..)?");
+     userInput.special = confirm("Include special characters? (!@'$£)?");
+  }  else {
+    alert("Password must be between 10 and 64");
+  }
+
+
 
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  getPasswordOptions();
+  console.log(userInput.passwordLength);
+  console.log(userInput.lowercase);
 
 }
+
+
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
