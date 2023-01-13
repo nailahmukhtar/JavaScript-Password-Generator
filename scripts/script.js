@@ -89,7 +89,8 @@ var upperCasedCharacters = [
 // Function for getting a random element from an array
 function getRandom(arr) {
   var randomNum = Math.floor(Math.random() * arr.length);
-  return randomNum;
+  return arr[randomNum];
+  
 }
 
 var userInput = {
@@ -116,13 +117,19 @@ function getPasswordOptions() {
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
+  if (!userInput.lowercase && !userInput.uppercase && !userInput.numeric && !userInput.special) {
+    alert ("You must choose one character type to continue - try again.")
+  } else {
   var passText = '';
   for (let i = 0; i < userInput.passwordLength; i++) {
-    if (userInput.lowercase === true) {
-      passText += lowerCasedCharacters[getRandom(lowerCasedCharacters)];
+    if (userInput.lowercase && userInput.uppercase && userInput.numeric && userInput.special) {
+      passText += getRandom(lowerCasedCharacters);
+
+
     }
   }
   return passText;
+  }
 }
 
 
