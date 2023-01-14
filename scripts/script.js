@@ -1,9 +1,5 @@
 // Array of special characters to be included in password
-var specialCharacters = ['@','%','+',
-  '\\',
-  '/',
-  "'",
-  '!',
+var specialCharacters = ['@','%','+','\\','/',"'",'!',
   '#',
   '$',
   '^',
@@ -23,7 +19,7 @@ var specialCharacters = ['@','%','+',
 ];
 
 // Array of numeric characters to be included in password
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var numericCharacter = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 // Array of lowercase characters to be included in password
 var lowerCasedCharacters = [
@@ -57,7 +53,7 @@ var lowerCasedCharacters = [
 
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+var upperCasedCharacter = [
   'A',
   'B',
   'C',
@@ -114,25 +110,67 @@ function getPasswordOptions() {
   }
 }
 
-// Function to generate password with user input
-function generatePassword() {
-  getPasswordOptions();
-  if (!userInput.lowercase && !userInput.uppercase && !userInput.numeric && !userInput.special) {
-    alert ("You must choose one character type to continue - try again.")
-  } else {
-  var passText = '';
-  for (let i = 0; i < userInput.passwordLength; i++) {
-    if (userInput.lowercase && userInput.uppercase && userInput.numeric && userInput.special) {
-      passText += getRandom(lowerCasedCharacters);
-
-
+function stuff(objectName) {
+  for (const item in objectName) {
+    if (Object.values(objectName) in (objectName.lowercase,objectName.uppercase,objectName.special,objectName.numeric)) {
+      console.log(Object.values(objectName));
+      passText += getRandom(lowerCasedCharacters);        
     }
-  }
-  return passText;
   }
 }
 
 
+function isTrue(value) {
+  return value === true;
+}
+
+// Function to generate password with user input
+function generatePassword() {
+  getPasswordOptions();
+    if (!userInput.lowercase && !userInput.uppercase && !userInput.numeric && !userInput.special) {
+      alert ("You must choose one character type to continue - try again.")
+    } else {
+    var userChoices = [userInput.lowercase, userInput.uppercase, userInput.numeric, userInput.special];
+    var numOfSelections = userChoices.filter(isTrue).length;    
+    var passText = '';
+    var lowerRun = 0;
+    var upperRun = 0;
+    var numericRun = 0;
+    var specialRun = 0;
+
+      for (let i = 0; i < userInput.passwordLength; i++) {
+        if (userInput.lowercase && lowerRun === 0) {
+          passText += getRandom(lowerCasedCharacters);
+          lowerRun = 1;
+
+        } else if (userInput.uppercase && upperRun === 0) {
+          passText += getRandom(upperCasedCharacter);
+          upperRun = 1;
+
+        } else if (userInput.numeric && numericRun === 0) {
+          passText += getRandom(numericCharacter);
+
+          numericRun = 1;
+
+        } else if (userInput.special && specialRun === 0) {
+          passText += getRandom(specialCharacters);
+
+          specialRun = 1;
+        }
+
+        var trackerTotal = lowerRun + upperRun + numericRun + specialRun;
+
+        if(numOfSelections === trackerTotal) {
+          var lowerRun = 0;
+          var upperRun = 0;
+          var numericRun = 0;
+          var specialRun = 0;
+        }
+        
+      }
+      return passText;
+    }
+}
 
 
 
