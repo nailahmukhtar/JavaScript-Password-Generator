@@ -110,16 +110,7 @@ function getPasswordOptions() {
   }
 }
 
-function stuff(objectName) {
-  for (const item in objectName) {
-    if (Object.values(objectName) in (objectName.lowercase,objectName.uppercase,objectName.special,objectName.numeric)) {
-      console.log(Object.values(objectName));
-      passText += getRandom(lowerCasedCharacters);        
-    }
-  }
-}
-
-
+//Function to check if value is true
 function isTrue(value) {
   return value === true;
 }
@@ -127,8 +118,11 @@ function isTrue(value) {
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
+    //If no input selected, throw error
     if (!userInput.lowercase && !userInput.uppercase && !userInput.numeric && !userInput.special) {
       alert ("You must choose one character type to continue - try again.")
+    
+    //build password with users input choices, alternating output until password length is reached
     } else {
     var userChoices = [userInput.lowercase, userInput.uppercase, userInput.numeric, userInput.special];
     var numOfSelections = userChoices.filter(isTrue).length;    
@@ -171,8 +165,6 @@ function generatePassword() {
       return passText;
     }
 }
-
-
 
 
 // Get references to the #generate element
