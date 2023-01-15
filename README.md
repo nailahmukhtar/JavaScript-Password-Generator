@@ -32,6 +32,9 @@ When the 'Generate Password' button was clicked
 ## Usage
 To view this in action, you can navigate to my [Project Website](https://nailahmukhtar.github.io/Javascript-Password-Generator)
 
+![project website screenshot](./assets/images/05-javascript-challenge-demo.png)
+
+
 ## Credits
 Assignment provided by © 2022 edX Boot Camps LLC
 
