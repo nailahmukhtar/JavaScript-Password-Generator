@@ -13,10 +13,10 @@ When the 'Generate Password' button was clicked
 	- Length of password
 	- At least 10 characters but no more than 64.
     - The user had to select at least one character type from the following, validating the code if nothing was selected.
-		- [x] Lowercase
-		- [x] Uppercase
-		- [x] Numeric
-		- [x] Special characters ($@%&*, etc)
+		- Lowercase
+		- Uppercase
+		- Numeric
+		- Special characters ($@%&*, etc)
 
  - Once all the prompts were answered true or false, the password should be generated and written to the page
     
