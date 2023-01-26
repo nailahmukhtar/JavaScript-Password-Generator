@@ -27,10 +27,10 @@ When the 'Generate Password' button was clicked
 
 
 
-[Project Website](https://nailahmukhtar.github.io/Javascript-Password-Generator).
+[Project Website](https://nailahmukhtar.github.io/JavaScript-Password-Generator).
 
 ## Usage
-To view this in action, you can navigate to my [Project Website](https://nailahmukhtar.github.io/Javascript-Password-Generator)
+To view this in action, you can navigate to my [Project Website](https://nailahmukhtar.github.io/JavaScript-Password-Generator)
 
 ![project website screenshot](./assets/images/05-javascript-challenge-demo.png)
 
